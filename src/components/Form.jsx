@@ -16,7 +16,7 @@ function Form() {
     additional2: "",
     additional3: "",
   });
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -27,9 +27,21 @@ function Form() {
     if (page === 0) {
       return <SignUpInfo formData={formData} setFormData={setFormData} handleChange={handleChange}/>;
     } else if (page === 1) {
-      return <PersonalInfo formData={formData} setFormData={setFormData} />;
+      return (
+        <PersonalInfo
+          formData={formData}
+          setFormData={setFormData}
+          handleChange={handleChange}
+        />
+      );
     } else {
-      return <AdditionalInfo formData={formData} setFormData={setFormData} />;
+      return (
+        <AdditionalInfo
+          formData={formData}
+          setFormData={setFormData}
+          handleChange={handleChange}
+        />
+      );
     }
   };
   return (

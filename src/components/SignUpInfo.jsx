@@ -1,6 +1,6 @@
 import React from "react";
 
-const SignUpInfo = ({ formData, setFormData, handleChange }) => {
+const SignUpInfo = ({ formData, handleChange }) => {
   const { email, password, confirmPassword } = formData;
   return (
     <div className="signUp-container">
