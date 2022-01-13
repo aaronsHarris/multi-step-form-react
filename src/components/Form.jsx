@@ -10,7 +10,7 @@ function Form() {
     password: "",
     confirmPassword: "",
     firstName: "",
-    age: 0,
+    age: null,
     city: "",
     additional1: "",
     additional2: "",
@@ -25,7 +25,13 @@ function Form() {
 
   const pageDisplay = () => {
     if (page === 0) {
-      return <SignUpInfo formData={formData} setFormData={setFormData} handleChange={handleChange}/>;
+      return (
+        <SignUpInfo
+          formData={formData}
+          setFormData={setFormData}
+          handleChange={handleChange}
+        />
+      );
     } else if (page === 1) {
       return (
         <PersonalInfo
@@ -68,12 +74,15 @@ function Form() {
             prev
           </button>
           <button
-            disabled={page == FormTitles.length - 1}
             onClick={() => {
-              setPage((currentPage) => currentPage + 1);
+              if (page == FormTitles.length - 1) {
+                alert("Form Submitted");
+              } else {
+                setPage((currentPage) => currentPage + 1);
+              }
             }}
           >
-            next
+            {page === FormTitles.length - 1 ? "Submit" : "Next"}
           </button>
         </div>
       </div>
