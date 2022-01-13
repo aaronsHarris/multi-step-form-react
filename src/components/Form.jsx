@@ -4,34 +4,42 @@ import PersonalInfo from "./PersonalInfo";
 import SignUpInfo from "./SignUpInfo";
 
 function Form() {
-  const [page, setPage] = useState(0)
+  const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
-    firstName: '',
+    email: "",
+    password: "",
+    confirmPassword: "",
+    firstName: "",
     age: 0,
-    city: '',
-    additional1: '',
-    additional2: '',
-    additional3: ''
-
-  })
-  const FormTitles = ['Sign Up', 'Personal Info', 'Additional Info']
+    city: "",
+    additional1: "",
+    additional2: "",
+    additional3: "",
+  });
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  const FormTitles = ["Sign Up", "Personal Info", "Additional Info"];
 
   const pageDisplay = () => {
     if (page === 0) {
-      return <SignUpInfo />
+      return <SignUpInfo formData={formData} setFormData={setFormData} handleChange={handleChange}/>;
     } else if (page === 1) {
-      return <PersonalInfo />
+      return <PersonalInfo formData={formData} setFormData={setFormData} />;
     } else {
-      return <AdditionalInfo />
+      return <AdditionalInfo formData={formData} setFormData={setFormData} />;
     }
-  }
+  };
   return (
     <div className="form">
       <div className="progress-bar">
-      <div style={{width: page === 0 ? '33.3%' : page === 1 ? '66.6%' : '100%'}}></div>
+        <div
+          style={{
+            width: page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%",
+          }}
+        ></div>
       </div>
       <div className="form-container">
         <div className="header">
