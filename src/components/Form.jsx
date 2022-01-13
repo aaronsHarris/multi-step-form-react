@@ -5,7 +5,18 @@ import SignUpInfo from "./SignUpInfo";
 
 function Form() {
   const [page, setPage] = useState(0)
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+    firstName: '',
+    age: 0,
+    city: '',
+    additional1: '',
+    additional2: '',
+    additional3: ''
 
+  })
   const FormTitles = ['Sign Up', 'Personal Info', 'Additional Info']
 
   const pageDisplay = () => {
@@ -36,15 +47,15 @@ function Form() {
           >
             prev
           </button>
+          <button
+            disabled={page == FormTitles.length - 1}
+            onClick={() => {
+              setPage((currentPage) => currentPage + 1);
+            }}
+          >
+            next
+          </button>
         </div>
-        <button
-          disabled={page == FormTitles.length - 1}
-          onClick={() => {
-            setPage((currentPage) => currentPage + 1);
-          }}
-        >
-          next
-        </button>
       </div>
     </div>
   );
