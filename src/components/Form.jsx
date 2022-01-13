@@ -9,12 +9,27 @@ function Form() {
       <div className="progress-bar"></div>
       <div className="form-container">
         <div className="header">
-<h1>{FormTitles[page]}</h1>
+          <h1>{FormTitles[page]}</h1>
         </div>
         <div className="body"></div>
         <div className="footer">
-        <button>prev</button></div>
-        <button disabled={page == FormTitles.length - 1} onClick={() => {setPage((currentPage) => currentPage + 1)}}>next</button>
+          <button
+            disabled={page == 0}
+            onClick={() => {
+              setPage((currentPage) => currentPage - 1);
+            }}
+          >
+            prev
+          </button>
+        </div>
+        <button
+          disabled={page == FormTitles.length - 1}
+          onClick={() => {
+            setPage((currentPage) => currentPage + 1);
+          }}
+        >
+          next
+        </button>
       </div>
     </div>
   );
